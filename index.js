@@ -1,10 +1,10 @@
 var packFlat = require('browser-pack-flat/plugin')
 var collapser = require('bundle-collapser/plugin')
 var packFlatStream = require('browser-pack-flat')
-var commonShake = require('common-shakeify')
+var commonShake = require('@sethvincent/common-shakeify')
 var unassertify = require('unassertify')
 var uglify = require('minify-stream')
-var envify = require('envify/custom')
+var dotenvify = require('@sethvincent/dotenvify')
 var uglifyify = require('uglifyify')
 
 function makeUglifyOptions (debug) {
@@ -32,14 +32,12 @@ module.exports = function (b, opts) {
     env: {}
   }, opts)
 
-  var env = Object.assign({
-    NODE_ENV: 'production'
-  }, process.env, opts.env)
+  Object.assign(process.env, opts.env)
 
   // Remove `assert()` calls.
   b.transform(unassertify, { global: true })
   // Replace `process.env.NODE_ENV` with "production".
-  b.transform(envify(env), { global: true })
+  b.transform(dotenvify(env), { global: true })
   // Remove dead code.
   b.transform(uglifyify, {
     global: true,
