@@ -1,5 +1,7 @@
 # tinyify
 
+> This is a (probably temporary) fork of tinyify that uses my fork of common-shakeify and @sethvincent/dotenvify instead of envify.
+
 a browserify plugin that runs various optimizations, so you don't have to install them all manually.
 
 [![npm][npm-image]][npm-url]
@@ -14,15 +16,15 @@ a browserify plugin that runs various optimizations, so you don't have to instal
 [standard-url]: http://npm.im/standard
 
 ```bash
-npm install --save-dev tinyify
+npm install --save-dev @sethvincent/tinyify
 
-browserify -p tinyify app.js
+browserify -p @sethvincent/tinyify app.js
 ```
 
 ## Included
 
  - [unassertify][] - Remove `assert()` calls
- - [dotenvify][] - Replace environment variables, optionally use a .env file
+ - [@sethvincent/dotenvify][] - Replace environment variables, optionally use a .env file
  - [uglifyify][] - Remove dead code from modules
  - [@sethvincent/common-shakeify][] - Remove unused exports from modules
  - [browser-pack-flat][] - Output a "flat" bundle, with all modules in a single scope
