@@ -26,7 +26,7 @@ browserify -p @sethvincent/tinyify app.js
  - [unassertify][] - Remove `assert()` calls
  - [@sethvincent/dotenvify][] - Replace environment variables, optionally use a .env file
  - [uglifyify][] - Remove dead code from modules
- - [@sethvincent/common-shakeify][] - Remove unused exports from modules
+ - [common-shakeify][] - Remove unused exports from modules
  - [browser-pack-flat][] - Output a "flat" bundle, with all modules in a single scope
  - [bundle-collapser][] - When using the `--no-flat` option, bundle-collapser replaces file paths in `require()` calls with short module IDs
  - [minify-stream][] - Uglify the final bundle
@@ -75,12 +75,12 @@ b.plugin('tinyify', { flat: false })
 If you need further customisation, I recommend installing the tools separately instead:
 
 ```bash
-npm install --save-dev unassertify envify uglifyify @sethvincent/common-shakeify browser-pack-flat uglify-js
+npm install --save-dev unassertify envify uglifyify common-shakeify browser-pack-flat uglify-js
 browserify entry.js \
   -g unassertify \
   -g @sethvincent/dotenvify \
   -g uglifyify \
-  -p @sethvincent/common-shakeify \
+  -p common-shakeify \
   -p browser-pack-flat/plugin \
 | uglifyjs -cm \
 > output.js
@@ -93,7 +93,7 @@ browserify('entry.js')
     .transform('unassertify', { global: true })
     .transform('@sethvincent/dotenvify', { global: true })
     .transform('uglifyify', { global: true })
-    .plugin('@sethvincent/common-shakeify')
+    .plugin('common-shakeify')
     .plugin('browser-pack-flat/plugin')
     .bundle()
     .pipe(require('minify-stream')({ sourceMap: false }))
@@ -109,7 +109,7 @@ Alternatively you can fork this repo and publish it on npm under a scope with yo
 [unassertify]: https://github.com/unassert-js/unassertify
 [@sethvincent/dotenvify]: https://github.com/sethvincent/@dotenvify
 [uglifyify]: https://github.com/hughsk/uglifyify
-[@sethvincent/common-shakeify]: https://github.com/browserify/@sethvincent/common-shakeify
+[common-shakeify]: https://github.com/browserify/common-shakeify
 [browser-pack-flat]: https://github.com/goto-bus-stop/browser-pack-flat
 [bundle-collapser]: https://github.com/substack/bundle-collapser
 [minify-stream]: https://github.com/goto-bus-stop/minify-stream

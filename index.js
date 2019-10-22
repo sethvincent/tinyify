@@ -1,7 +1,7 @@
 var packFlat = require('browser-pack-flat/plugin')
 var collapser = require('bundle-collapser/plugin')
 var packFlatStream = require('browser-pack-flat')
-var commonShake = require('@sethvincent/common-shakeify')
+var commonShake = require('common-shakeify')
 var unassertify = require('unassertify')
 var uglify = require('minify-stream')
 var dotenvify = require('@sethvincent/dotenvify')
@@ -37,7 +37,7 @@ module.exports = function (b, opts) {
   // Remove `assert()` calls.
   b.transform(unassertify, { global: true })
   // Replace `process.env.NODE_ENV` with "production".
-  b.transform(dotenvify(env), { global: true })
+  b.transform(dotenvify(process.env), { global: true })
   // Remove dead code.
   b.transform(uglifyify, {
     global: true,
