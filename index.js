@@ -37,7 +37,7 @@ module.exports = function (b, opts) {
   // Remove `assert()` calls.
   b.transform(unassertify, { global: true })
   // Replace `process.env.NODE_ENV` with "production".
-  b.transform(dotenvify(process.env), { global: true })
+  b.transform(dotenvify, { global: true })
   // Remove dead code.
   b.transform(uglifyify, {
     global: true,
