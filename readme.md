@@ -1,6 +1,6 @@
 # tinyify
 
-> This is a (probably temporary) fork of tinyify that uses my fork of common-shakeify and @sethvincent/dotenvify instead of envify.
+> This is a fork of [tinyify](https://github.com/browserify/tinyify) that uses @sethvincent/dotenvify instead of envify.
 
 a browserify plugin that runs various optimizations, so you don't have to install them all manually.
 
